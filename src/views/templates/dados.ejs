@@ -1,0 +1,93 @@
+<%- include ('../partials/header.ejs') %> 
+
+<div class="vh-100">
+    <div class="h-80 bg-light m-5 rounded border border-3 border-dark" >
+        <input type="hidden" id="query_utilizada" value="<%-query_utilizada-%>">
+        
+        <div class="d-block">
+            <div class="vw-90 m-5">
+                <div style="text-align: center">
+                    <h1><%-query_utilizada-%></h1>
+                </div>
+                <canvas id="myChart" width="600" height="180"></canvas>
+            </div>
+        </div>
+
+       
+    </div>
+
+</div>
+
+<script>
+   
+    let chart = null;
+    let teste = 1;
+
+    //Variáveis que receberão os dados para popular o gráfico
+    const labels = [];
+    const data = [];
+
+    //Dados recebidos do res.render na rota
+    '<% result.forEach((row, index) => { %>'
+        labels.push('<%- row.label.toUpperCase() %>');
+        data.push('<%- row.data %>');
+    '<% }); %>'
+ 
+    let query_utilizada = document.getElementById('query_utilizada').value; 
+
+
+    let chartStatus = Chart.getChart("myChart"); // <canvas> id
+    if (chartStatus != undefined) {
+        chartStatus.destroy();
+    }
+
+    const ctx = document.getElementById('myChart');
+    
+        
+    chart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                    data: data,
+                    borderWidth: 1,
+                    backgroundColor: [
+                            '#000'
+
+                    ]
+                    }]
+    },
+    options: {
+        scaleShowLabels : false,
+        plugins: {
+         legend: {
+            display: false
+         }
+        },
+
+
+
+        scales: {
+    
+        y: {
+            beginAtZero: true
+        }
+            }
+        }, 
+        x: {
+            ticks: {
+                font: {
+                    size: 50,
+                }
+            }
+        }
+    });
+        
+
+    function chamei(){
+        console.log(teste.value);
+    }
+      
+</script>
+
+<%- include ('../partials/footer.ejs') %> 
