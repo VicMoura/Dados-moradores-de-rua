@@ -17,6 +17,12 @@ router.post('/visualizarDados', (req, res) => {
                 console.log(query_utilizada);
                 connection.query(query_utilizada.query, (err, result) => {
                         console.log(result);
+                        if(query_utilizada.id === 1){
+                                result.forEach(element => {
+                                        element.label = element.label.slice(15);
+                                });
+                        }
+
                         res.render('templates/dados.ejs', {result : JSON.parse(JSON.stringify(result)), query_utilizada : query_utilizada.nome})
                 });
         }

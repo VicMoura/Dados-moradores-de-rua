@@ -3,13 +3,13 @@
 
 <div class="vh-100">
     <div class="h-75 bg-light m-5 rounded border border-3 border-dark" >
-        <div class="d-flex justify-content-center mt-3">
+        <div class="d-flex justify-content-center mt-5">
             <h3>SELECIONE AS INFORMAÇÕES A SEREM VISUALIZADAS</h3>
         </div>
 
         <div class="vh-100 d-block  m-5">
-                <div class="d-flex">
-                  
+                <div class="d-flex" style="justify-content: center;">
+
                         <div class="flex-row m-2">
                            <form method="POST" action="/visualizarDados">
                             <select id="primeiro-select" aria-label="Default select example" name="query_selecionada">
@@ -22,14 +22,18 @@
                             <input type="submit" value="Visualizar Dados" onclick="confirmar()"/>
                            </form>
                         </div>
-                
+
+                </div>
+
+                <div class="d-flex m-5" style="justify-content: center;">
+                    <div>
+                        <img src="grafico.png">
+                    </div>
+         
                 </div>
                 
             
 
-              <div class="d-flex h-50 justify-content-center">
-                <canvas id="myChart"></canvas>
-            </div>
         </div>
 
        
